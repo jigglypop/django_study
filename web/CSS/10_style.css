@@ -1,0 +1,26 @@
+.font-1 {
+  font-size: 2em;
+  font-family: 'Times New Roman', Times, serif;
+  /* 폰트 굵기 */
+  font-weight: 300;
+  /* 폰트 스타일 */
+  font-style: italic;
+}
+.font-2 {
+  font-size: 130%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+}
+.font-3 { 
+  font-family: 'East Sea Dokdo', cursive;
+}
+.font-4 { 
+  font-family: 'Yeon Sung', cursive;
+}
+.font-5 {  
+  font-family: 'Gamja Flower', cursive;
+}
+.font-normal {
+  font-size: 2rem;
+}
+
