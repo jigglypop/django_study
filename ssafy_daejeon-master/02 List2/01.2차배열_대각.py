@@ -4,10 +4,13 @@ arr = [[ 1,  2,  4,  7, 11],
        [ 6,  9, 13, 16, 18],
        [10, 14, 17, 19, 20]]
 
+# 사선의 수 8개 : 4행 5열일 때 4+5-1 
+
 
 N, M = len(arr), len(arr[0])
 
 for diag in range(0, N + M - 1):    # diag: 사선의 수 # x, y: 시작 좌표
+    
     x = 0 if diag < M else (diag - M + 1)
     y = diag if diag < M else M - 1
     while x < N and y >= 0:
