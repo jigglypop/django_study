@@ -17,6 +17,7 @@ div {
 .blue + .red + div {
   background-color: purple;
 }
+
 /* 자식 선택자 */
 .parent > li {
   color: red;  

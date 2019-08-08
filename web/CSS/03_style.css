@@ -19,7 +19,7 @@ ul, ul li {
 }
 
 
-.div-vh {
+.div-vh { 
   width: 10vh;
   height: 10vh;
   background-color: rgba(0,0,255,0.5);
