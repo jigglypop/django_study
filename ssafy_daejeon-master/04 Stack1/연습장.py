@@ -1,16 +1,14 @@
-class Stack:
-    def __init__(self,size):
-        self.size = size
-        self.arr = [0] * size
-        self.top = -1
-    def push(self, item):
-        self.top += 1
-        self.arr[self.top] = item
+memo = [0] * 11
+memo[1] = 1
 
-    
-S = Stack(10)
+def fibo_memo(n):
+    if n < 2 or memo[n]:
+        return memo[n]
+    memo[n] = fibo_memo(n - 1) + fibo_memo(n - 2)
+    return memo[n]
 
-print(S.arr)
-for i in range(5):
-    S.push(i)
-print(S.arr)
+fibo_memo(10)
+for i in range(1, 11):
+    print('memo[{}] = {}'.format(i, memo[i]))
+
+print(memo)

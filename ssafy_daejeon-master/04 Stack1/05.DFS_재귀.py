@@ -1,6 +1,5 @@
 def DFS(v):
     visit[v] = True
-
     print(v, end=" ")
     
     for w in G[v]:

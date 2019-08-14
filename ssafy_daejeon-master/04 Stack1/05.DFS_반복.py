@@ -1,10 +1,8 @@
 def DFS(v):
-
     stack = []
     stack.append(v)
     visit[v] = True
     print(v, end=" ")
-
     while len(stack) > 0:
         prev = v
         for w in G[v]:
@@ -16,7 +14,6 @@ def DFS(v):
                 break
         if prev == v:
             v = stack.pop()
-
 # ----------------------------------------------
 import sys
 
@@ -30,5 +27,4 @@ for i in range(E):
     u, v = map(int, input().split())
     G[u].append(v)
     G[v].append(u)
-
 DFS(1)
