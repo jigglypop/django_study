@@ -1,7 +1,10 @@
 from django.urls import path
-from django.urls import path, include
+# 현재 app(directory)의 views.py
+from . import views
 
 urlpatterns = [
    path('', views.index),
-   
+   path('new/', views.new),
+   path('create/', views.create),
 ]
+ 
