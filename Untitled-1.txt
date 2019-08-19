@@ -1,0 +1,6 @@
+가상환경 생성/실행
+.gitignore
+git init
+django 설치
+requirements.txt 설정
+  > 추후에 pip install -r requirements.txt 설치
