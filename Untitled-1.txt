@@ -4,3 +4,5 @@ git init
 django 설치
 requirements.txt 설정
   > 추후에 pip install -r requirements.txt 설치
+================================================
+django-admin startproject '' .
