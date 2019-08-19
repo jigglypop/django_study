@@ -6,3 +6,8 @@ requirements.txt 설정
   > 추후에 pip install -r requirements.txt 설치
 ================================================
 django-admin startproject '' .
+app 만들고 등록
+model 정의
+  - models.py (스키마)
+  - makemigrations (마이그레이션 파일 생성)
+  - migrate (db 반영)
