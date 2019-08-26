@@ -5,17 +5,18 @@ import pprint
 def BFS(s):
     m[s[0]][s[1]] = 1
     Q = deque()
-    Q.append([s[0],s[1]])
+    Q.append(s)
     dy = [-1,1,0,0]
     dx = [0,0,-1,1]
     while Q:
-        for i in range(4):
-            sy,sx = Q.popleft()
-            ny = sy+dy[i]
-            nx = sx+dx[i]
-            if m[ny][nx] == 'L':
-                m[ny][nx] = m[sy][sx] + 1
-                Q.append((ny.nx))
+        sy,sx = Q.popleft()
+        for i in range(4):            
+            ny = sy + dy[i]
+            nx = sx + dx[i]
+            if 0 <= ny < Y and 0 <= nx < X:
+                if m[ny][nx] == 'L':
+                    m[ny][nx] = m[sy][sx] + 1
+                    Q.append([ny,nx])
 
 sys.stdin = open('input3.txt','r')
 Y,X= map(int,input().split()) 
