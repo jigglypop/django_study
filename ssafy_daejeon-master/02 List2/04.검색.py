@@ -1,4 +1,3 @@
-
 # 순서대로 검색하는 방법. 가장 기본적
 def sequence_search(arr, key):
     for i in range(len(arr)):
@@ -6,27 +5,23 @@ def sequence_search(arr, key):
     return '없음'
 
 
-
-
 # 이진검색
 # 반드시 정렬된 상태여야 한다.
 
-def BinarySearch(arr,lo,hi,key):
+def binarySearch(arr,lo,hi,key):
     if lo > hi:
-        return False
-
-    
+        return False    
     mid = (lo+hi) >> 1 # //써도 됨
     if arr[mid] == key:
         return True
     elif arr[mid] > key:
         # mid는 볼 필요 없음
-        return BinarySearch(arr,lo,mid - 1,key)
+        return binarySearch(arr,lo,mid - 1,key)
     else:
-        return BinarySearch(arr,mid + 1,hi,key)
+        return binarySearch(arr,mid + 1,hi,key)
     
 
-def BinarySearch(arr,lo,hi,key):
+def binary_Search(arr,lo,hi,key):
     lo,hi = 0, len(arr) -1
     # lo = 범위의 시작인덱스, hi = 범위의 끝 인덱스
     # 계속 줄다가 같아질 때까지 해야함
@@ -48,8 +43,8 @@ hi = len(arr) - 1
 print(sequence_search(arr, 39))
 print(sequence_search(arr, 50))
 
-print(binary_search(arr, 0, hi, 39))
-print(binary_search(arr, 0, hi, 50))
+print(binary_Search(arr, 0, hi, 39))
+print(binary_Search(arr, 0, hi, 50))
 
 print(binarySearch(arr, 0, hi, 39))
 print(binarySearch(arr, 0, hi, 50))

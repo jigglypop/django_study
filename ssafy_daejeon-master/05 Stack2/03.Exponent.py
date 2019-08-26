@@ -1,8 +1,6 @@
-
 def exp(x, n):
     if n <= 1:
         return x ** n
-
     if n & 1:   # 홀수
         ret = exp(x, (n - 1) // 2)
         return ret * ret * x

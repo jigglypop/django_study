@@ -15,6 +15,7 @@ for i in range(N):
             print('%2d ' % arr[i][j], end='')
     else:
         for j in range(M - 1, -1, -1):
+            # 홀수에서는 반대로. M-1부터 0까지.
             print('%2d ' % arr[i][j], end='')
     print()
 

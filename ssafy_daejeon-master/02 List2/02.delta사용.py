@@ -1,4 +1,3 @@
-
 arr = [[9, 20, 2, 18, 11],
        [19, 1, 25, 3, 21],
        [8, 24, 10, 17, 7],
@@ -18,10 +17,8 @@ for x in range(N):
             tx, ty = x + dx[i], y + dy[i]
             if tx < 0 or ty < 0 or tx == len(arr) or ty == len(arr[0]):
                 continue
-
             val = arr[x][y] - arr[tx][ty]
             sum += (-val if val < 0 else val)
-
 print(sum)
 
 # set 으로 저장
@@ -34,8 +31,6 @@ for x in range(N):
             tx, ty = x + dx, y + dy
             if tx < 0 or ty < 0 or tx == len(arr) or ty == len(arr[0]):
                 continue
-
             val = arr[x][y] - arr[tx][ty]
             sum += (-val if val < 0 else val)
-
 print(sum)

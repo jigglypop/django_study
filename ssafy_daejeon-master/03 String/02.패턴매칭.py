@@ -14,7 +14,6 @@ for i in range(n - m + 1):
     while j < m:
         if p[j] != t[i + j]: break
         j += 1
-
     if j == m:
         print(t[i:])
         break
@@ -26,7 +25,6 @@ while i < n:
     if p[j] != t[i]:
         i = i - j
         j = -1
-
     i, j = i + 1, j + 1
     if j == m:
         print(t[i- j:])
