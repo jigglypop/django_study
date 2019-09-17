@@ -1,0 +1,20 @@
+{% extends 'articles/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block body %}
+{% if request.resolver_match.url_name == 'create' %}
+    <h1 class='text-center'>글 작성하기</h1>
+{% else %}
+    <h1 class='text-center'>글 수정하기</h1>
+<form action="" method='POST'>
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% comment %} {% buttons %} {% endcomment %}
+    {{article_form.as_p}}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  {% comment %} {% endbuttons %} {% endcomment %}
+</form>
+{% endblock %}
+
+

@@ -14,6 +14,14 @@ onclick="return confirm('진짜 지울래?')">
     <input type="submit" value="삭제">
 </form>
 <a href="{% url 'articles:update' article.pk %}">수정하기</a>
+
+
+<form action="/articles/{{article.pk}}/comment_create/" method='POST'>
+    {% csrf_token %}
+    <input type="submit" value='삭제'>
+</form>
+
+
 <hr>
 <h3>댓글 작성</h3>
 <form action="/articles/{{article.pk}}/comment_create/" method='POST'>
@@ -26,14 +34,17 @@ onclick="return confirm('진짜 지울래?')">
 {% for comment in comments %}
     <li>{{comment.content}}</li>
     <li>{{comment.created_at}}</li>
+    <a href="{% url 'articles:comment_delete' article.pk comment.pk %}">Delete</a>
     <hr>
 {% empty%}
     <p>댓글이 없어요 ㅠ 댓글을 작성해 주세요</p>
 {% endfor %}
-
-{% for comment in comments %}
+<h1>article.comment_set.all</h1>
+{% for comment in article.comment_set.all %}
     <li>{{comment.content}}</li>
     <li>{{comment.created_at}}</li>
     <hr>
 {% endfor %}
 {% endblock %}
+
+
