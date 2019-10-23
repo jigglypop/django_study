@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import UserCreationForm,CustomUserCreationForm
+from .forms import CustomUserCreationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm

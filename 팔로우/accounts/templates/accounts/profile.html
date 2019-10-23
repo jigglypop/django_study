@@ -1,0 +1,23 @@
+{% extends 'articles/base.html' %}
+{% block body  %}
+
+<h1>{{user_profile.username}}의 프로필</h1>
+<hr>
+<h3>내가 쓴 글</h3>
+{% for article in user_profile.article_set.all %}
+<a href="{% url 'articles:detail' article.pk %}">{{article.title}}</a>
+<br>
+{% endfor %}
+<hr>
+<h3>내가 쓴 댓글</h3>
+{% for comment in user_profile.comment_set.all %}
+<p>{{comment.article.pk}}</p>
+{% endfor %}
+<hr>
+<h3>내가 좋아요 누른 글</h3>
+{% for article in user_profile.like_articles.all %}
+<a href="{% url 'articles:detail' article.pk %}">{{article.title}}</a>
+{% endfor %}
+<hr>
+
+{% endblock  %}
