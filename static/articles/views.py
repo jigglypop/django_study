@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import Article,Comment
 from .forms import ArticleForm,CommentForm
 
@@ -9,28 +9,28 @@ def index(request):
 
 def create(request):
     if request.method == 'POST':
-        form = ArticleForm(request.POST)
-        if form.is_valid():
-            article = form.save()
-            article_pk = article.pk
-            return redirect(f'/articles/{article_pk}/detail/')
+        article_form = ArticleForm(request.POST, request.FILES)
+        if article_form.is_valid():
+            article = article_form.save()
+            return redirect('articles:detail', article.pk)
     else:
         article_form = ArticleForm()
-        context = {
-            'article_form': article_form
-        }
-    return render(request,'articles/create.html',context)
+    context = {
+        'article_form': article_form
+    }
+    return render(request, 'articles/create.html', context)
+
     
-def detail(request,article_pk):
-    article = Article.objects.get(pk=article_pk)
-    comments = Comment.objects.filter(article_id=article_pk)
+def detail(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
+    comments = article.comment_set.all()
     comment_form = CommentForm()
     context = {
-        'comments' : comments,
-        'comment_form' : comment_form,
-        'article' : article
+        'article': article,
+        'comments': comments,
+        'comment_form': comment_form
     }
-    return render(request,'articles/detail.html',context)
+    return render(request, 'articles/detail.html', context)
 
 def update(request,article_pk):
     article = Article.objects.get(pk=article_pk)

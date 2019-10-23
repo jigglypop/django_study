@@ -1,4 +1,7 @@
 from django.db import models
+from django.conf import settings
+from imagekit.models import ProcessedImageField, ImageSpecField
+from imagekit.processors import ResizeToFill, ResizeToFit, Thumbnail
 
 # Create your models here.
 class Article(models.Model):
@@ -6,6 +9,7 @@ class Article(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    image = models.ImageField(blank=True)
 
 class Comment(models.Model):
     content = models.CharField(max_length=150)

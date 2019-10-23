@@ -1,0 +1,11 @@
+{% extends 'articles/base.html' %}
+{% block body%}
+<h1>게시판</h1>
+{% load static %}
+<img src="{% static 'articles/irine.jpg'%}" alt="">
+
+{% for article in articles %}
+<br>
+<a href="{{article.pk}}/detail/">{{article.title}}</a>
+{% endfor %}
+{% endblock  %}
