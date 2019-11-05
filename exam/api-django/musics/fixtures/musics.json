@@ -1,0 +1,48 @@
+[
+{
+  "model": "musics.artist",
+  "pk": 1,
+  "fields": {
+    "name": "\uc544\uc774\uc720"
+  }
+},
+{
+  "model": "musics.artist",
+  "pk": 2,
+  "fields": {
+    "name": "\ubc29\ud0c4\uc18c\ub144\ub2e8"
+  }
+},
+{
+  "model": "musics.music",
+  "pk": 1,
+  "fields": {
+    "artist": 1,
+    "title": "\uae08\uc694\uc77c\uc5d0 \ub9cc\ub098\uc694"
+  }
+},
+{
+  "model": "musics.music",
+  "pk": 2,
+  "fields": {
+    "artist": 1,
+    "title": "\uc88b\uc740\ub0a0"
+  }
+},
+{
+  "model": "musics.music",
+  "pk": 3,
+  "fields": {
+    "artist": 2,
+    "title": "idol"
+  }
+},
+{
+  "model": "musics.music",
+  "pk": 4,
+  "fields": {
+    "artist": 2,
+    "title": "dna"
+  }
+}
+]
