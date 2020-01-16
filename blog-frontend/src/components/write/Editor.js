@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.bubble.css';
 import styled from 'styled-components';
@@ -30,7 +30,7 @@ const QuillWrapper = styled.div`
   }
 `;
 
-const Editor = ({ title, body, onChangeField }) => {
+const Editor = ({ title, body, url, onChangeField }) => {
   const quillElement = useRef(null);
   const quillInstance = useRef(null);
 
@@ -67,12 +67,21 @@ const Editor = ({ title, body, onChangeField }) => {
     onChangeField({ key: 'title', value: e.target.value });
   };
 
+  const onChangeUrl = e => {
+    onChangeField({ key: 'url', value: e.target.value });
+  };
+
   return (
     <EditorBlock>
       <TitleInput
         placeholder="제목을 입력하세요"
         onChange={onChangeTitle}
         value={title}
+      />
+      <TitleInput
+        placeholder="이미지 url을 입력하세요"
+        onChange={onChangeUrl}
+        value={url}
       />
       <QuillWrapper>
         <div ref={quillElement} />

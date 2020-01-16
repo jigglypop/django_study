@@ -61,6 +61,7 @@ export const write = async ctx => {
   const schema = Joi.object().keys({
     title: Joi.string().required(),
     body: Joi.string().required(),
+    url: Joi.string().required(),
     tags: Joi.array()
       .items(Joi.string())
       .required(),
@@ -71,10 +72,12 @@ export const write = async ctx => {
     ctx.body = result.error;
     return;
   }
-  const { title, body, tags } = ctx.request.body;
+  const { title, body, url, tags } = ctx.request.body;
   const post = new Post({
     title,
+
     body: sanitizeHtml(body, sanitizeOption),
+    url,
     tags,
     user: ctx.state.user,
   });
@@ -141,7 +144,9 @@ export const update = async ctx => {
   const { id } = ctx.params;
   const schema = Joi.object().keys({
     title: Joi.string(),
+
     body: Joi.string(),
+    url: Joi.string(),
     tags: Joi.array().items(Joi.string()),
   });
   const result = Joi.validate(ctx.request.body, schema);

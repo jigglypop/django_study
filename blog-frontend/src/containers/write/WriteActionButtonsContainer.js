@@ -6,26 +6,34 @@ import { writePost, updatePost } from '../../modules/write';
 
 const WriteActionButtonsContainer = ({ history }) => {
   const dispatch = useDispatch();
-  const { title, body, tags, post, postError, originalPostId } = useSelector(
-    ({ write }) => ({
-      title: write.title,
-      body: write.body,
-      tags: write.tags,
-      post: write.post,
-      postError: write.postError,
-      originalPostId: write.originalPostId,
-    }),
-  );
+  const {
+    title,
+    body,
+    url,
+    tags,
+    post,
+    postError,
+    originalPostId,
+  } = useSelector(({ write }) => ({
+    title: write.title,
+    body: write.body,
+    url: write.url,
+    tags: write.tags,
+    post: write.post,
+    postError: write.postError,
+    originalPostId: write.originalPostId,
+  }));
 
   const onPublish = () => {
     if (originalPostId) {
-      dispatch(updatePost({ title, body, tags, id: originalPostId }));
+      dispatch(updatePost({ title, body, url, tags, id: originalPostId }));
       return;
     }
     dispatch(
       writePost({
         title,
         body,
+        url,
         tags,
       }),
     );

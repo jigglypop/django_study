@@ -5,10 +5,10 @@ import Button from './Button';
 const Fullscreen = styled.div`
     position:fixed;
     z-index:30;
-    top:0;
-    left:0;
-    width:100%,
-    height:100%;
+    top:center;
+    left:center;
+    width:300%,
+    height:300%;
     background:rgba(0,0,0,0.25);
     display:flex;
     justify-content:center;
@@ -16,7 +16,8 @@ const Fullscreen = styled.div`
 `;
 
 const AskModalBlock = styled.div`
-  width: 320px;
+  width: 700px;
+  height: 250px;
   background: white;
   padding: 1.5rem;
   border-radious: 4px;

@@ -20,7 +20,7 @@ const PostItemBlock = styled.div`
 `;
 
 const PostItem = ({ post }) => {
-  const { publishedDate, user, tags, title, body, _id } = post;
+  const { publishedDate, user, url, tags, title, body, _id } = post;
   return (
     <PostItemBlock>
       <h1>
@@ -30,10 +30,7 @@ const PostItem = ({ post }) => {
         username={user.username}
         publishedDate={new Date(publishedDate)}
       />
-      <img
-        src="http://ph.kado.net/news/photo/201904/962977_409034_0930.jpeg"
-        width="150px"
-      />
+      <img src={url} width="150px" />
       <Tags tags={tags} />
       <h2>{body}</h2>
     </PostItemBlock>

@@ -36,7 +36,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
   if (loading || !post) {
     return null;
   }
-  const { title, body, user, publishedDate, tags } = post;
+  const { title, body, url, user, publishedDate, tags } = post;
   return (
     <PostViewerBlock>
       <Helmet>
@@ -45,11 +45,13 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
       <PostHead>
         {actionButtons}
         <h1>{title}</h1>
+
         <SubInfo
           username={user.username}
           publishedDate={publishedDate}
           hasMarginTop
         />
+        <img src={url} />
         <Tags tags={tags} />
       </PostHead>
       <PostContent dangerouslySetInnerHTML={{ __html: body }} />
