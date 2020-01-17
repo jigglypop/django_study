@@ -45,14 +45,13 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
       <PostHead>
         {actionButtons}
         <h1>{title}</h1>
-
+        <Tags tags={tags} />
         <SubInfo
           username={user.username}
           publishedDate={publishedDate}
           hasMarginTop
         />
         <img src={url} />
-        <Tags tags={tags} />
       </PostHead>
       <PostContent dangerouslySetInnerHTML={{ __html: body }} />
     </PostViewerBlock>

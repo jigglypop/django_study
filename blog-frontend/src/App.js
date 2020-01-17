@@ -22,10 +22,12 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
 import HeaderContainer from './containers/common/HeaderContainer';
+import './App.css';
 
 const drawerWidth = 240;
 
@@ -107,58 +109,61 @@ const App = () => {
 
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={clsx(classes.appBar, {
-            [classes.appBarShift]: open,
-          })}
-        >
-          <Toolbar>
-            <HeaderContainer />
-            {console.log(HeaderContainer)}
-            <IconButton
-              color="black"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, open && classes.hide)}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          className={classes.drawer}
-          variant="persistent"
-          anchor="left"
-          open={open}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <div className={classes.drawerHeader}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'ltr' ? (
-                <ChevronLeftIcon />
-              ) : (
-                <ChevronRightIcon />
-              )}
-            </IconButton>
-          </div>
-          <Divider />
-          <List>
-            {['write', 'login', 'register'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <Link to={'/' + text}>
-                  <ListItemText primary={text} />
-                </Link>
-              </ListItem>
-            ))}
-          </List>
-        </Drawer>
+        <p id="handleMenu">
+          <AppBar
+            position="fixed"
+            className={clsx(classes.appBar, {
+              [classes.appBarShift]: open,
+            })}
+          >
+            <Toolbar>
+              <HeaderContainer />
+              {console.log(HeaderContainer)}
+              <IconButton
+                color="black"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                className={clsx(classes.menuButton, open && classes.hide)}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Toolbar>
+          </AppBar>
+
+          <Drawer
+            className={classes.drawer}
+            variant="persistent"
+            anchor="left"
+            open={open}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+          >
+            <div className={classes.drawerHeader}>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === 'ltr' ? (
+                  <ChevronLeftIcon />
+                ) : (
+                  <ChevronRightIcon />
+                )}
+              </IconButton>
+            </div>
+            <Divider />
+            <List>
+              {['write', 'login', 'register'].map((text, index) => (
+                <ListItem button key={text}>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <Link to={'/' + text}>
+                    <ListItemText primary={text} />
+                  </Link>
+                </ListItem>
+              ))}
+            </List>
+          </Drawer>
+        </p>
         <main
           className={clsx(classes.content, {
             [classes.contentShift]: open,

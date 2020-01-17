@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -30,4 +30,15 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+@media screen and (max-width: 768px) {
+
+  #handleMenu,
+  h1 {
+    align-content: '1000px';
+    display: none;
+  }
+
+
 }

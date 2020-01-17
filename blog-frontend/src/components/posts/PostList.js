@@ -11,10 +11,11 @@ const PostListBlock = styled(Responsive)`
 `;
 
 const PostItemBlock = styled.div`
+  border-radius: 10px;
   background-color: #fafafa;
   margin: 10px;
   padding: 10px;
-  width: 275px;
+  width: 270px;
   height: 400px;
   box-shadow: 2px 2px 2px 2px gray;
 `;
@@ -23,16 +24,20 @@ const PostItem = ({ post }) => {
   const { publishedDate, user, url, tags, title, body, _id } = post;
   return (
     <PostItemBlock>
-      <h1>
-        <Link to={`/@${user.username}/${_id}`}>{title}</Link>
-      </h1>
+      <span>
+        <h1>
+          <Link to={`/@${user.username}/${_id}`}>{title}</Link>
+        </h1>
+        <Tags tags={tags} />
+      </span>
+
       <SubInfo
         username={user.username}
         publishedDate={new Date(publishedDate)}
       />
       <img src={url} width="150px" />
-      <Tags tags={tags} />
-      <h2>{body}</h2>
+
+      <h4>{body}</h4>
     </PostItemBlock>
   );
 };
