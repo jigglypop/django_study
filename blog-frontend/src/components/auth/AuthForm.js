@@ -4,13 +4,7 @@ import { Link } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 import Button from '../common/Button';
 
-const AuthFormBlock = styled.div`
-  h3 {
-    margin: 0;
-    color: ${palette.gray[8]};
-    margin-bottom: 1rem;
-  }
-`;
+// const AuthFormBlock = AuthFormBlock;
 
 const StyledInput = styled.input`
   font-size: 1rem;
@@ -59,7 +53,7 @@ const ErrorMessage = styled.div`
 const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
   const text = textMap[type];
   return (
-    <AuthFormBlock>
+    <div id="AuthFormBlock">
       <h3>{text}</h3>
       <form onSubmit={onSubmit}>
         <StyledInput
@@ -88,9 +82,7 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
           />
         )}
         {error && <ErrorMessage>{error}</ErrorMessage>}
-        <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem' }}>
-          {text}
-        </ButtonWithMarginTop>
+        <button id="ButtonWithMarginTop">{text}</button>
       </form>
       <Footer>
         {type === 'login' ? (
@@ -99,7 +91,7 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
           <Link to="/login">로그인</Link>
         )}
       </Footer>
-    </AuthFormBlock>
+    </div>
   );
 };
 
