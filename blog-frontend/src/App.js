@@ -173,7 +173,6 @@ const App = () => {
           <Helmet>
             <title>VOTE</title>
           </Helmet>
-
           <Route component={PostListPage} path={['/@:username', '/']} exact />
           <Route component={LoginPage} path="/login" />
           <Route component={RegisterPage} path="/register" />
