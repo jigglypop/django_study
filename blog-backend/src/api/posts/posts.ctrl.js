@@ -56,16 +56,16 @@ export const checkOwnPost = (ctx, next) => {
   }
   return next();
 };
-
-export const write = async ctx => {
+// 포스트 작성 save
+export const write = async (ctx) => {
+  // 검증
   const schema = Joi.object().keys({
     title: Joi.string().required(),
     body: Joi.string().required(),
     url: Joi.string().required(),
-    tags: Joi.array()
-      .items(Joi.string())
-      .required(),
+    tags: Joi.array().items(Joi.string()).required(),
   });
+  // 유효성 검증 후 실패시 에러
   const result = Joi.validate(ctx.request.body, schema);
   if (result.error) {
     ctx.status = 400;
@@ -75,7 +75,6 @@ export const write = async ctx => {
   const { title, body, url, tags } = ctx.request.body;
   const post = new Post({
     title,
-
     body: sanitizeHtml(body, sanitizeOption),
     url,
     tags,
@@ -89,14 +88,14 @@ export const write = async ctx => {
   }
 };
 
-const removeHtmlAndShorten = body => {
+const removeHtmlAndShorten = (body) => {
   const filtered = sanitizeHtml(body, {
     allowedTags: [],
   });
   return filtered.length < 200 ? filtered : `${filtered.slice(0, 200)}...`;
 };
-
-export const list = async ctx => {
+// 포스트 조회 find
+export const list = async (ctx) => {
   const page = parseInt(ctx.query.page || '1', 10);
   if (page < 1) {
     ctx.status = 400;
@@ -117,7 +116,7 @@ export const list = async ctx => {
       .exec();
     const postCount = await Post.countDocuments(query).exec();
     ctx.set('Last-Page', Math.ceil(postCount / 10));
-    ctx.body = posts.map(post => ({
+    ctx.body = posts.map((post) => ({
       ...post,
       body: removeHtmlAndShorten(post.body),
     }));
@@ -125,26 +124,38 @@ export const list = async ctx => {
     ctx.throw(500, e);
   }
 };
-
-export const read = async ctx => {
+// 조회 read
+export const read = async (ctx) => {
   ctx.body = ctx.state.post;
-};
-
-export const remove = async ctx => {
-  const { id } = ctx.params;
   try {
-    await Post.findByIdAndRemove(id).exec();
-    ctx.status = 204;
+    const post = await Post.findById(id).exec();
+    if (!post) {
+      // 404 Not found
+      ctx.status = 404;
+      return;
+    }
   } catch (e) {
+    // 서버 에러
     ctx.throw(500, e);
   }
 };
-
-export const update = async ctx => {
+// 데이터 삭제 findByIdAndRemove
+export const remove = async (ctx) => {
+  const { id } = ctx.params;
+  try {
+    await Post.findByIdAndRemove(id).exec();
+    // 204 No Content
+    ctx.status = 204;
+  } catch (e) {
+    // 서버 에러
+    ctx.throw(500, e);
+  }
+};
+// 데이터 업데이트 findByIdAndUpdate
+export const update = async (ctx) => {
   const { id } = ctx.params;
   const schema = Joi.object().keys({
     title: Joi.string(),
-
     body: Joi.string(),
     url: Joi.string(),
     tags: Joi.array().items(Joi.string()),

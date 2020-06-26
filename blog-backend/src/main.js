@@ -17,7 +17,7 @@ mongoose
   .then(() => {
     console.log('Connected to MongoDB');
   })
-  .catch(e => {
+  .catch((e) => {
     console.error(e);
   });
 
@@ -33,7 +33,7 @@ app.use(router.routes()).use(router.allowedMethods());
 
 const buildDirectory = path.resolve(__dirname, '../../blog-frontend/build');
 app.use(serve(buildDirectory));
-app.use(async ctx => {
+app.use(async (ctx) => {
   if (ctx.status === 404 && ctx.path.indexOf('/api') !== 0) {
     await send(ctx, 'index.html', { root: buildDirectory });
   }

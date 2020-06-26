@@ -24,12 +24,12 @@ const PostItem = ({ post }) => {
   const { publishedDate, user, url, tags, title, body, _id } = post;
   return (
     <PostItemBlock>
-      <span>
+      {/* <span>
         <h1>
           <Link to={`/@${user.username}/${_id}`}>{title}</Link>
         </h1>
         <Tags tags={tags} />
-      </span>
+      </span> */}
 
       <SubInfo
         username={user.username}
@@ -50,7 +50,7 @@ const PostList = ({ posts, loading, error, showWriteButton }) => {
     <>
       {!loading && posts && (
         <GridList>
-          {posts.map(post => (
+          {posts.map((post) => (
             <PostItem post={post} key={post._id} />
           ))}
         </GridList>
