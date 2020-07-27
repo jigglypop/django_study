@@ -29,7 +29,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(' ')
 
 
 # Application definition
@@ -41,12 +41,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'accounts',
+    # s3 static
     'storages',
+
+
     'rest_framework',
     'rest_framework.authtoken',
+    # 'rest_auth',
+    # 'rest_auth.registration',
     'corsheaders',
     'knox',
-    'accounts',
+    # 'allauth',
+    # 'allauth.account',
 ]
 
 
@@ -61,7 +69,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
     'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -125,9 +135,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'ko'
+
 TIME_ZONE = 'Asia/Seoul'
+
 USE_I18N = True
+
 USE_L10N = True
+
 USE_TZ = False
 
 
@@ -163,4 +177,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',  # React 도메인
+    'http://languagetogether.s3-website.ap-northeast-2.amazonaws.com/',
+    ''
 )
