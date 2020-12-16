@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    {% if user.is_authenticated %}
+    <p>{{request.user}}</p> <a href="{% url 'accounts:logout' %}">로그아웃</a>
+    <a href="{% url 'articles:create' %}">글 작성하기</a>
+    {% else %}
+    <a href="{% url 'accounts:signup' %}">회원가입</a>
+    <a href="{% url 'accounts:login' %}">로그인</a>
+    {% endif %}
+    <a href="{% url 'articles:index' %}">목록</a>
+    
+</head>
+<body>
+    {% block body %}
+    {% endblock  %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'articles/base.html' %}
+{% block body%}
+<h1>{{article.title}}</h1>
+<h2>{{article.content}}</h2>
+<img src="{{ article.image.url }}">
+<a href="/articles/">목록</a>
+<a href="/articles/{{article.pk}}/update/">수정</a>
+<a href="/articles/{{article.pk}}/delete/">삭제</a>
+
+{% for comment in comments %}
+<p>{{comment.content}}</p>
+<a href="/articles/{{ comment.pk }}/comment_delete/">댓글 삭제</a>
+{% endfor %}
+
+<form action="/articles/{{ article.pk }}/comment_create/" method="POST">
+{% csrf_token %}
+{{ comment_form.as_p }}
+<input type="submit" value='제출'>
+</form>
+
+{% endblock  %}
